@@ -5,7 +5,8 @@
 /tmp
 /out-tsc
 /bazel-out
-
+install-state.gz
+unplugged
 # Node
 /node_modules
 npm-debug.log
