@@ -1,0 +1,19 @@
+{
+  "hosting": {
+    "public": "dist/shashan-sthapana-sam",
+    "predeploy":[
+      "npm run build:production"
+    ],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
