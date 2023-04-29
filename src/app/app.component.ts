@@ -1,8 +1,15 @@
 import { AfterViewInit, Component, HostListener } from '@angular/core';
 import Cropper from 'cropperjs';
 import { toJpeg } from 'html-to-image';
-import { BehaviorSubject, Observable, debounceTime, map } from 'rxjs';
-import { Name, rou } from './Data';
+import {
+  BehaviorSubject,
+  Observable,
+  debounceTime,
+  delay,
+  firstValueFrom,
+  map,
+  of,
+} from 'rxjs';
 
 const IdCardPreviewDataID = 'IDCARDDEMo';
 @Component({
@@ -24,16 +31,37 @@ export class AppComponent implements AfterViewInit {
     this.showCropper = true;
     this._orignalImage = value;
   }
+
   cropperInstance!: Cropper;
-  roundedImage = rou;
+  private _roundedImage = '';
+  public get roundedImage() {
+    return this._roundedImage;
+  }
+  public set roundedImage(value) {
+    this._roundedImage = value;
+    localStorage.setItem('roundedImage', value);
+  }
   showCropper = false;
-
   finalImage = '';
-
-  YourName = Name;
+  private _YourName = '';
+  public get YourName() {
+    return this._YourName;
+  }
+  public set YourName(value) {
+    this._YourName = value;
+    localStorage.setItem('YourName', value);
+  }
   constructor() {
     this._LoaderObse = this.ShowLoader.pipe(map((a) => !a));
     this.init();
+    const image = localStorage.getItem('roundedImage');
+    if (image !== null) {
+      this._roundedImage = image;
+    }
+    const namee = localStorage.getItem('YourName');
+    if (namee !== null) {
+      this._YourName = namee;
+    }
   }
   ngAfterViewInit(): void {
     // const myCanvas = document.getElementById('mycanvas') as HTMLCanvasElement;
@@ -135,8 +163,9 @@ export class AppComponent implements AfterViewInit {
     }
   }
 
-  cropClick() {
+  async cropClick() {
     this.ShowLoader.next(true);
+    await firstValueFrom(of('').pipe(delay(100)));
     if (!this.cropperInstance) {
       alert('Something went wrong');
       this.orignalImage = '';
