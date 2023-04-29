@@ -33,35 +33,13 @@ export class AppComponent implements AfterViewInit {
   }
 
   cropperInstance!: Cropper;
-  private _roundedImage = '';
-  public get roundedImage() {
-    return this._roundedImage;
-  }
-  public set roundedImage(value) {
-    this._roundedImage = value;
-    localStorage.setItem('roundedImage', value);
-  }
+  roundedImage = '';
   showCropper = false;
   finalImage = '';
-  private _YourName = '';
-  public get YourName() {
-    return this._YourName;
-  }
-  public set YourName(value) {
-    this._YourName = value;
-    localStorage.setItem('YourName', value);
-  }
+  YourName = '';
   constructor() {
     this._LoaderObse = this.ShowLoader.pipe(map((a) => !a));
     this.init();
-    const image = localStorage.getItem('roundedImage');
-    if (image !== null) {
-      this._roundedImage = image;
-    }
-    const namee = localStorage.getItem('YourName');
-    if (namee !== null) {
-      this._YourName = namee;
-    }
   }
   ngAfterViewInit(): void {
     // const myCanvas = document.getElementById('mycanvas') as HTMLCanvasElement;
