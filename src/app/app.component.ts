@@ -167,19 +167,31 @@ export class AppComponent implements AfterViewInit {
       return;
     }
     this.ShowLoader.next(true);
+    IdCardNode.style.display = 'block';
+    // IdCardNode.style.zIndex = '10';
+    await firstValueFrom(of('').pipe(delay(1000)));
     scrollTo({
       behavior: 'auto',
       left: 0,
       top: 0,
     });
-    IdCardNode.style.display = 'block';
-    const AAAA = await toJpeg(IdCardNode, {
-      style: {
-        display: 'block',
-      },
-    });
+    var ua = navigator.userAgent.toLowerCase();
+    if (ua.indexOf('safari') != -1) {
+      if (ua.indexOf('chrome') === -1) {
+        // alert('2'); // Safari
+        let data = await toJpeg(IdCardNode);
+        while (data.length < 100000) {
+          data = await toJpeg(IdCardNode);
+        }
+        // await toJpeg(IdCardNode);
+        // await toJpeg(IdCardNode);
+        // await toJpeg(IdCardNode);
+      }
+    }
+    const AAAA = await toJpeg(IdCardNode);
     this.finalImage = AAAA;
     this.ShowLoader.next(false);
+    // IdCardNode.style.zIndex = '-10';
     IdCardNode.style.display = 'none';
   }
   downloadImage() {
