@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, HostListener } from '@angular/core';
 import Cropper from 'cropperjs';
-import { toJpeg } from 'html-to-image';
+import { toJpeg, toPng } from 'html-to-image';
 import {
   BehaviorSubject,
   Observable,
@@ -10,6 +10,7 @@ import {
   map,
   of,
 } from 'rxjs';
+import { Name, rou } from './Data';
 
 const IdCardPreviewDataID = 'IDCARDDEMo';
 @Component({
@@ -20,6 +21,7 @@ const IdCardPreviewDataID = 'IDCARDDEMo';
 export class AppComponent implements AfterViewInit {
   height = 0;
   width = 0;
+
   HeightWidthBrhaviouSubject = new BehaviorSubject<void>('' as any);
   private _orignalImage = '';
   _LoaderObse!: Observable<boolean>;
@@ -33,10 +35,10 @@ export class AppComponent implements AfterViewInit {
   }
 
   cropperInstance!: Cropper;
-  roundedImage = '';
+  roundedImage = rou;
   showCropper = false;
   finalImage = '';
-  YourName = '';
+  YourName = Name;
   constructor() {
     this._LoaderObse = this.ShowLoader.pipe(map((a) => !a));
     this.init();
@@ -179,9 +181,9 @@ export class AppComponent implements AfterViewInit {
     if (ua.indexOf('safari') != -1) {
       if (ua.indexOf('chrome') === -1) {
         // alert('2'); // Safari
-        let data = await toJpeg(IdCardNode);
+        let data = await toPng(IdCardNode);
         while (data.length < 100000) {
-          data = await toJpeg(IdCardNode);
+          data = await toPng(IdCardNode);
         }
         // await toJpeg(IdCardNode);
         // await toJpeg(IdCardNode);
