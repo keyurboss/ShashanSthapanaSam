@@ -216,8 +216,8 @@ export class AppComponent implements AfterViewInit {
     if (navigator.canShare({ files })) {
       await navigator.share({
         files,
-        title: 'Snkalp Patra',
-        text: 'Shashan Sparsh Snakalp Patra',
+        // title: '',
+        text: 'શાસન પ્રભાવનાની અમૂલ્ય તક',
       });
     }
   }

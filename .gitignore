@@ -7,6 +7,8 @@
 /bazel-out
 install-state.gz
 unplugged
+*.log
+.firebase
 # Node
 /node_modules
 npm-debug.log
