@@ -1,14 +1,9 @@
 {
   "hosting": {
     "public": "dist/shashan-sthapana-sam",
-    "predeploy":[
-      "npm run build:production"
-    ],
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
+    "target": "amulyatak",
+    "predeploy": ["npm run build:production"],
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
         "source": "**",

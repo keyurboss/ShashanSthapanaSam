@@ -329,6 +329,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@angular/pwa@npm:^15.2.7":
+  version: 15.2.7
+  resolution: "@angular/pwa@npm:15.2.7"
+  dependencies:
+    "@angular-devkit/schematics": 15.2.7
+    "@schematics/angular": 15.2.7
+    parse5-html-rewriting-stream: 7.0.0
+  peerDependencies:
+    "@angular/cli": ^15.0.0
+  peerDependenciesMeta:
+    "@angular/cli":
+      optional: true
+  checksum: df3740671b266a1b08b47495912fe32eb3b3c817cb352dbeeee8ecb2c6d5436daee5d9545d37f86d1038a7d8bcd2610dc767b2ab2d254b637449ff61fee1f116
+  languageName: node
+  linkType: hard
+
 "@angular/router@npm:^15.2.0":
   version: 15.2.8
   resolution: "@angular/router@npm:15.2.8"
@@ -340,6 +356,20 @@ __metadata:
     "@angular/platform-browser": 15.2.8
     rxjs: ^6.5.3 || ^7.4.0
   checksum: cd4fdf8e46e9f3bfd27a3de143e0e3b795f7a689864cbba3b595d481ed75ab6cc8656ff3eb299f50e154a2ff7a6ff70ffd242763c4de753cc0062fe119b309e4
+  languageName: node
+  linkType: hard
+
+"@angular/service-worker@npm:^15.2.0":
+  version: 15.2.8
+  resolution: "@angular/service-worker@npm:15.2.8"
+  dependencies:
+    tslib: ^2.3.0
+  peerDependencies:
+    "@angular/common": 15.2.8
+    "@angular/core": 15.2.8
+  bin:
+    ngsw-config: ngsw-config.js
+  checksum: 2eba178af7e989773201f0bd087e80977a5b8782ba0e2d3d2f31e68ab069563db8d2fe856b2560bf507d069ce4b7d5723113248491403ae625abf12d498f1c40
   languageName: node
   linkType: hard
 
@@ -7618,7 +7648,9 @@ __metadata:
     "@angular/forms": ^15.2.0
     "@angular/platform-browser": ^15.2.0
     "@angular/platform-browser-dynamic": ^15.2.0
+    "@angular/pwa": ^15.2.7
     "@angular/router": ^15.2.0
+    "@angular/service-worker": ^15.2.0
     "@types/jasmine": ~4.3.0
     autoprefixer: ^10.4.14
     cropperjs: ^1.5.13

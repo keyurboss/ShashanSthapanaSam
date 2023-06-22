@@ -1,5 +1,17 @@
 {
   "projects": {
-    "default": "shashansparsh"
+    "default": "rpslinkshortner"
+  },
+  "targets": {
+    "rpslinkshortner": {
+      "hosting": {
+        "sahastrafantrust": [
+          "sahastrafantrust"
+        ],
+        "amulyatak": [
+          "amulyatak"
+        ]
+      }
+    }
   }
 }

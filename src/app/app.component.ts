@@ -1,7 +1,15 @@
 import { AfterViewInit, Component, HostListener } from '@angular/core';
 import Cropper from 'cropperjs';
-import { toJpeg } from 'html-to-image';
-import { BehaviorSubject, Observable, debounceTime, map } from 'rxjs';
+import { toJpeg, toPng } from 'html-to-image';
+import {
+  BehaviorSubject,
+  Observable,
+  debounceTime,
+  delay,
+  firstValueFrom,
+  map,
+  of,
+} from 'rxjs';
 import { Name, rou } from './Data';
 
 const IdCardPreviewDataID = 'IDCARDDEMo';
@@ -13,6 +21,7 @@ const IdCardPreviewDataID = 'IDCARDDEMo';
 export class AppComponent implements AfterViewInit {
   height = 0;
   width = 0;
+
   HeightWidthBrhaviouSubject = new BehaviorSubject<void>('' as any);
   private _orignalImage = '';
   _LoaderObse!: Observable<boolean>;
@@ -24,12 +33,11 @@ export class AppComponent implements AfterViewInit {
     this.showCropper = true;
     this._orignalImage = value;
   }
+
   cropperInstance!: Cropper;
   roundedImage = rou;
   showCropper = false;
-
   finalImage = '';
-
   YourName = Name;
   constructor() {
     this._LoaderObse = this.ShowLoader.pipe(map((a) => !a));
@@ -135,8 +143,9 @@ export class AppComponent implements AfterViewInit {
     }
   }
 
-  cropClick() {
+  async cropClick() {
     this.ShowLoader.next(true);
+    await firstValueFrom(of('').pipe(delay(100)));
     if (!this.cropperInstance) {
       alert('Something went wrong');
       this.orignalImage = '';
@@ -160,19 +169,31 @@ export class AppComponent implements AfterViewInit {
       return;
     }
     this.ShowLoader.next(true);
+    IdCardNode.style.display = 'block';
+    // IdCardNode.style.zIndex = '10';
+    await firstValueFrom(of('').pipe(delay(1000)));
     scrollTo({
       behavior: 'auto',
       left: 0,
       top: 0,
     });
-    IdCardNode.style.display = 'block';
-    const AAAA = await toJpeg(IdCardNode, {
-      style: {
-        display: 'block',
-      },
-    });
+    var ua = navigator.userAgent.toLowerCase();
+    if (ua.indexOf('safari') != -1) {
+      if (ua.indexOf('chrome') === -1) {
+        // alert('2'); // Safari
+        let data = await toPng(IdCardNode);
+        while (data.length < 100000) {
+          data = await toPng(IdCardNode);
+        }
+        // await toJpeg(IdCardNode);
+        // await toJpeg(IdCardNode);
+        // await toJpeg(IdCardNode);
+      }
+    }
+    const AAAA = await toJpeg(IdCardNode);
     this.finalImage = AAAA;
     this.ShowLoader.next(false);
+    // IdCardNode.style.zIndex = '-10';
     IdCardNode.style.display = 'none';
   }
   downloadImage() {
@@ -195,8 +216,8 @@ export class AppComponent implements AfterViewInit {
     if (navigator.canShare({ files })) {
       await navigator.share({
         files,
-        title: 'Snkalp Patra',
-        text: 'Shashan Sparsh Snakalp Patra',
+        // title: '',
+        text: 'શાસન પ્રભાવનાની અમૂલ્ય તક',
       });
     }
   }
