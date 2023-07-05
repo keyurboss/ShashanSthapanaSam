@@ -5,6 +5,9 @@
   "targets": {
     "rpslinkshortner": {
       "hosting": {
+        "chaturmasik-choviyar": [
+          "chaturmasik-choviyar"
+        ],
         "sahastrafantrust": [
           "sahastrafantrust"
         ],
