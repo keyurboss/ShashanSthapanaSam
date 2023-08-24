@@ -21,7 +21,7 @@
       > -->
     </div>
     <div
-      class="h-[256px] w-[256px] bg-white relative z-10 rounded-full border-[3px] border-solid border-black my-8 flex justify-center items-center"
+      class="h-[256px] aspect-ratio bg-white relative z-10 border-[3px] border-solid border-black my-8 flex justify-center items-center"
     >
       <!-- [ngStyle]="{
         'border-color': roundedImage ? 'white' : 'black'
@@ -71,10 +71,8 @@
       </button>
     </div>
   </div>
-  <div class="top-0 left-0 absolute -z-20 overflow-hidden"
-  style="display: none"
-  
-  id="IDCARDDEMo">
+  <div class="top-0 left-0 absolute -z-20 overflow-hidden" id="IDCARDDEMo">
+    <!-- style="display: none" -->
     <div class="" style="height: 600px; width: 600px">
       <!-- style="height: 863px; width: 610px" -->
       <!-- style="height: 863px; width: 610px; display: none" -->
@@ -83,9 +81,15 @@
       <img
         [src]="roundedImage"
         class="absolute z-10"
-        style="width: 287px; top: 140px; left: 158px"
+        style="width: 180px; top: 119px; outline: 1px solid; left: 373px"
         alt=""
       />
+      <!-- <img
+        [src]="roundedImage"
+        class="absolute z-10"
+        style="width: 287px; top: 140px; left: 158px"
+        alt=""
+      /> -->
       <!-- style="width: 172px; top: 220px; left: 144px" -->
       <!-- style="top: 460px; left: 40px; font-size: 20px" -->
       <!-- style="top: 210px; left: 78px; font-size: 20px" -->
@@ -100,12 +104,12 @@
         class="absolute font-bold"
         >{{ YourName }}</span
       > -->
-      <img
+      <!-- <img
         class="absolute"
         style="width: 176px; top: 348px; left: 208px; z-index: 200"
         src="/assets/patra_06_1.png"
-      />
-      <img class="h-full w-full object-contain" src="/assets/patra_06.jpeg" />
+      /> -->
+      <img class="h-full w-full object-contain" src="/assets/patra_07.jpeg" />
     </div>
   </div>
 
