@@ -11,6 +11,8 @@ import {
   of,
 } from 'rxjs';
 import { Name, rou } from './Data';
+import imageCompression,{Options} from 'browser-image-compression';
+
 
 const IdCardPreviewDataID = 'IDCARDDEMo';
 @Component({
@@ -84,6 +86,8 @@ export class AppComponent implements AfterViewInit {
     }
     const width = sourceCanvas.width;
     const height = sourceCanvas.height;
+   console.log(width,height);
+   
     canvas.width = width;
     canvas.height = height;
     context.imageSmoothingEnabled = true;
@@ -107,7 +111,7 @@ export class AppComponent implements AfterViewInit {
     this.HeightWidthBrhaviouSubject.next();
   }
 
-  OnFielChangeEvent(event: Event) {
+  async OnFielChangeEvent(event: Event) {
     const target = event.target as any;
     const files = target.files;
     if (files.length === 0) return;
@@ -118,9 +122,23 @@ export class AppComponent implements AfterViewInit {
       return;
     }
     this.ShowLoader.next(true);
+    const imageFile = files[0];
+    const controller = new AbortController();
+  
+    const options:Options = {
+      // other options here
+      maxWidthOrHeight:1000,
+      signal: controller.signal,
+    }
+    const compressedFile = await imageCompression(imageFile, options);
+    
+    // simulate abort the compression after 1.5 seconds
+    setTimeout(function () {
+      controller.abort(new Error('I just want to stop'));
+    }, 1500);
     const reader = new FileReader();
     // this.imagePath = files;
-    reader.readAsDataURL(files[0]);
+    reader.readAsDataURL(compressedFile);
     reader.onload = (_event) => {
       this.orignalImage = reader.result ? reader.result?.toString() : '';
       // this.url = reader.result;
@@ -134,7 +152,7 @@ export class AppComponent implements AfterViewInit {
     if (e !== null && e instanceof HTMLImageElement) {
       this.cropperInstance = new Cropper(e, {
         aspectRatio: 0.741173,
-        // viewMode: 1,
+        viewMode: 1,
         ready: () => {
           this.ShowLoader.next(false);
         },
@@ -155,7 +173,8 @@ export class AppComponent implements AfterViewInit {
     const croppedCanvas = this.cropperInstance.getCroppedCanvas();
 
     // Round
-    const roundedCanvas = this.getRoundedCanvas(croppedCanvas);
+    const roundedCanvas = croppedCanvas;
+    // const roundedCanvas = this.getRoundedCanvas(croppedCanvas);
     if (roundedCanvas) {
       this.roundedImage = roundedCanvas.toDataURL();
       console.log(this.roundedImage);
