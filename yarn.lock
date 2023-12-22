@@ -359,6 +359,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@angular/service-worker@npm:^17.0.0":
+  version: 17.0.8
+  resolution: "@angular/service-worker@npm:17.0.8"
+  dependencies:
+    tslib: "npm:^2.3.0"
+  peerDependencies:
+    "@angular/common": 17.0.8
+    "@angular/core": 17.0.8
+  bin:
+    ngsw-config: ngsw-config.js
+  checksum: 74d72ed266e90813a5d4a43d632c5c48f71e69e1fe036e1daf2b8f6736174e8640b3c3d59ca3a9f816d4f75abbe1a4e3ca412b71720efb7f90ab97fad553f02f
+  languageName: node
+  linkType: hard
+
 "@angular/ssr@npm:^17.0.8":
   version: 17.0.8
   resolution: "@angular/ssr@npm:17.0.8"
@@ -8157,6 +8171,7 @@ __metadata:
     "@angular/platform-browser-dynamic": "npm:^17.0.0"
     "@angular/platform-server": "npm:^17.0.0"
     "@angular/router": "npm:^17.0.0"
+    "@angular/service-worker": "npm:^17.0.0"
     "@angular/ssr": "npm:^17.0.8"
     "@types/express": "npm:^4.17.17"
     "@types/jasmine": "npm:~5.1.0"
