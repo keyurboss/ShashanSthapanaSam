@@ -98,6 +98,8 @@ export class AppComponent implements AfterViewInit {
     }
     const width = sourceCanvas.width;
     const height = sourceCanvas.height;
+    console.log(width, height);
+
     canvas.width = width;
     canvas.height = height;
     context.imageSmoothingEnabled = true;
@@ -148,7 +150,7 @@ export class AppComponent implements AfterViewInit {
     }, 1500);
     const reader = new FileReader();
     // this.imagePath = files;
-    reader.readAsDataURL(files[0]);
+    reader.readAsDataURL(compressedFile);
     reader.onload = (_event) => {
       this.orignalImage = reader.result ? reader.result?.toString() : '';
       // this.url = reader.result;
@@ -161,7 +163,7 @@ export class AppComponent implements AfterViewInit {
     const e = document.getElementById('imageshowcase');
     if (e !== null && e instanceof HTMLImageElement) {
       this.cropperInstance = new Cropper(e, {
-        aspectRatio: 1,
+        aspectRatio: 0.741173,
         viewMode: 1,
         ready: () => {
           this.ShowLoader.next(false);
@@ -183,7 +185,8 @@ export class AppComponent implements AfterViewInit {
     const croppedCanvas = this.cropperInstance.getCroppedCanvas();
 
     // Round
-    const roundedCanvas = this.getRoundedCanvas(croppedCanvas);
+    const roundedCanvas = croppedCanvas;
+    // const roundedCanvas = this.getRoundedCanvas(croppedCanvas);
     if (roundedCanvas) {
       this.roundedImage = roundedCanvas.toDataURL();
       console.log(this.roundedImage);
@@ -244,8 +247,8 @@ export class AppComponent implements AfterViewInit {
     if (navigator.canShare({ files })) {
       await navigator.share({
         files,
-        title: 'Snkalp Patra',
-        text: 'Shashan Sparsh Snakalp Patra',
+        // title: '',
+        text: 'શાસન પ્રભાવનાની અમૂલ્ય તક',
       });
     }
   }

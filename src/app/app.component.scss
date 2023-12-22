@@ -193,13 +193,19 @@ body {
   background-color: #222222;
 }
 
-.cropper-view-box,
-.cropper-face {
-  border-radius: 50%;
+.image_name_style {
+  top: 300px;
+  left: 76px;
+  font-size: 20px;
+  width: 246px;
+  text-align: center;
 }
-
-/* The css styles for `outline` do not follow `border-radius` on iOS/Safari (#979). */
-.cropper-view-box {
-    outline: 0;
-    box-shadow: 0 0 0 1px #39f;
+.image_back_style {
+  width: 400px;
+}
+.image_image_style {
+  width: 183px;
+  top: 81px;
+  left: 109px;
+  // outline: 1px solid white;
 }

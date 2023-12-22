@@ -65,7 +65,7 @@
       <button
         [disabled]="!YourName || !roundedImage"
         (click)="CreateSnkalp()"
-        class="bg-blue-500 mt-5 disabled:bg-gray-400 disabled:border-black border hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+        class="bg-yellow-200 mt-5 disabled:bg-gray-400 disabled:border-black border hover:bg-blue-700 text-[#011a5c] uppercase text-lg font-bold py-2 px-4 rounded-md"
       >
         Create Card
       </button>
@@ -76,33 +76,30 @@
     id="IDCARDDEMo"
     style="display: none"
   >
-    <div
-      class=""
-      style="width: 186px; top: 83px; outline: 1px solid white; left: 130px px"
-    >
-      <!-- <div class="" style="height: 721px; width: 446px"> -->
-      <!-- <div class="" style="height: 863px; width: 610px"> -->
+    <div class="image_back_style">
+      <!-- style="height: 863px; width: 610px" -->
       <!-- style="height: 863px; width: 610px; display: none" -->
+      <!-- style="width: 170px; top: 24px; left: 138px" -->
+      <!-- style="width: 208px; top: 56px; left: 92px" -->
       <img
         [src]="roundedImage"
-        style="width: 170px; top: 24px; left: 138px"
-        class="absolute z-10"
-        alt=""
+        class="absolute z-10 image_image_style"
       />
+      <!-- <img
+        [src]="roundedImage"
+        class="absolute z-10"
+        style="width: 287px; top: 140px; left: 158px"
+        alt=""
+      /> -->
       <!-- style="width: 172px; top: 220px; left: 144px" -->
       <!-- style="top: 460px; left: 40px; font-size: 20px" -->
       <!-- style="top: 210px; left: 78px; font-size: 20px" -->
-      <span
-        style="
-          top: 300px;
-          left: 100px;
-          font-size: 20px;
-          width: 246px;
-          text-align: center;
-        "
-        class="absolute font-bold"
-        >{{ YourName }}</span
-      >
+      <span class="absolute font-bold image_name_style">{{ YourName }}</span>
+      <!-- <img
+        class="absolute"
+        style="width: 176px; top: 348px; left: 208px; z-index: 200"
+        src="/assets/patra_06_1.png"
+      /> -->
       <img class="h-full w-full object-contain" src="/assets/Skim-2.jpg" />
     </div>
   </div>
@@ -116,7 +113,7 @@
       <img
         [src]="orignalImage"
         id="imageshowcase"
-        class="imagecomponent w-screen outline"
+        class="imagecomponent w-auto outline"
         style="max-height: calc(var(--vh) * 0.6)"
       />
     </div>
@@ -126,6 +123,7 @@
     >
       Crop
     </button>
+    <!-- bg-yellow-200 mt-5 disabled:bg-gray-400 disabled:border-black border hover:bg-blue-700 text-[#011a5c] uppercase text-lg font-bold py-2 px-4 rounded-md -->
   </div>
   }
   <div
