@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/shashan-sthapana-sam",
+    "public": "dist/shashan-sthapana-sam/browser",
     "target": "chaturmasik-choviyar",
     "predeploy": ["npm run build"],
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
