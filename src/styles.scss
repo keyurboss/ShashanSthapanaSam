@@ -1,1 +1,54 @@
+@import "cropperjs/dist/cropper.min.css";
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+}
+.aspect-ratio{
+  aspect-ratio: 0.7311;
+}
+
+.cropper-view-box,
+.cropper-face {
+  // border-radius: 50%;
+}
+.background-image-new {
+  background-image: url("/assets/bg.jpg");
+}
+
+/* The css styles for `outline` do not follow `border-radius` on iOS/Safari (#979). */
+.cropper-view-box {
+  outline: 0;
+  box-shadow: 0 0 0 1px #39f;
+}
+html,
+body {
+  -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  // user-select: none;
+  overscroll-behavior: none;
+}
+// body{
+//   background-color: var(--body-bg);
+//   padding-top: env(safe-area-inset-top);
+// }
+
+.h-screen {
+  height: var(--vh);
+}
+
+.w-screen {
+  width: var(--vw);
+}
+
+.hide {
+  display: none !important;
+}
