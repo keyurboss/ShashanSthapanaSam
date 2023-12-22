@@ -12,11 +12,12 @@ import {
 } from 'rxjs';
 import { Name, rou } from './Data';
 import imageCompression, { Options } from 'browser-image-compression';
+import { AsyncPipe } from '@angular/common';
 
 const IdCardPreviewDataID = 'IDCARDDEMo';
 @Component({
   standalone: true,
-  imports: [],
+  imports: [AsyncPipe],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
