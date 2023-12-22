@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, HostListener } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  HostListener,
+  Inject,
+  PLATFORM_ID,
+} from '@angular/core';
 import Cropper from 'cropperjs';
 import { toJpeg, toPng } from 'html-to-image';
 import {
@@ -12,12 +18,13 @@ import {
 } from 'rxjs';
 import { Name, rou } from './Data';
 import imageCompression, { Options } from 'browser-image-compression';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, isPlatformBrowser } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 const IdCardPreviewDataID = 'IDCARDDEMo';
 @Component({
   standalone: true,
-  imports: [AsyncPipe],
+  imports: [AsyncPipe, FormsModule],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
@@ -43,8 +50,11 @@ export class AppComponent implements AfterViewInit {
   showCropper = false;
   finalImage = '';
   YourName = Name;
-  constructor() {
+  constructor(@Inject(PLATFORM_ID) platformId: any) {
     this._LoaderObse = this.ShowLoader.pipe(map((a) => !a));
+    if (!isPlatformBrowser(platformId)) {
+      return;
+    }
     this.init();
   }
   ngAfterViewInit(): void {
@@ -88,22 +98,20 @@ export class AppComponent implements AfterViewInit {
     }
     const width = sourceCanvas.width;
     const height = sourceCanvas.height;
-    console.log(width, height);
-
     canvas.width = width;
     canvas.height = height;
     context.imageSmoothingEnabled = true;
     context.drawImage(sourceCanvas, 0, 0, width, height);
     context.globalCompositeOperation = 'destination-in';
     context.beginPath();
-    // context.arc(
-    //   width / 2,
-    //   height / 2,
-    //   Math.min(width, height) / 2,
-    //   0,
-    //   2 * Math.PI,
-    //   true
-    // );
+    context.arc(
+      width / 2,
+      height / 2,
+      Math.min(width, height) / 2,
+      0,
+      2 * Math.PI,
+      true
+    );
     context.fill();
     return canvas;
   }
@@ -140,7 +148,7 @@ export class AppComponent implements AfterViewInit {
     }, 1500);
     const reader = new FileReader();
     // this.imagePath = files;
-    reader.readAsDataURL(compressedFile);
+    reader.readAsDataURL(files[0]);
     reader.onload = (_event) => {
       this.orignalImage = reader.result ? reader.result?.toString() : '';
       // this.url = reader.result;
@@ -153,7 +161,7 @@ export class AppComponent implements AfterViewInit {
     const e = document.getElementById('imageshowcase');
     if (e !== null && e instanceof HTMLImageElement) {
       this.cropperInstance = new Cropper(e, {
-        aspectRatio: 0.741173,
+        aspectRatio: 1,
         viewMode: 1,
         ready: () => {
           this.ShowLoader.next(false);
@@ -175,8 +183,7 @@ export class AppComponent implements AfterViewInit {
     const croppedCanvas = this.cropperInstance.getCroppedCanvas();
 
     // Round
-    const roundedCanvas = croppedCanvas;
-    // const roundedCanvas = this.getRoundedCanvas(croppedCanvas);
+    const roundedCanvas = this.getRoundedCanvas(croppedCanvas);
     if (roundedCanvas) {
       this.roundedImage = roundedCanvas.toDataURL();
       console.log(this.roundedImage);
@@ -237,8 +244,8 @@ export class AppComponent implements AfterViewInit {
     if (navigator.canShare({ files })) {
       await navigator.share({
         files,
-        // title: '',
-        text: 'શાસન પ્રભાવનાની અમૂલ્ય તક',
+        title: 'Snkalp Patra',
+        text: 'Shashan Sparsh Snakalp Patra',
       });
     }
   }

@@ -21,7 +21,7 @@
       > -->
     </div>
     <div
-      class="h-[256px] aspect-ratio bg-white relative z-10 border-[3px] border-solid border-black my-8 flex justify-center items-center"
+      class="h-[150px] w-[150px] bg-white relative z-10 rounded-full border-[3px] border-solid border-black my-8 flex justify-center items-center"
     >
       <!-- [ngStyle]="{
         'border-color': roundedImage ? 'white' : 'black'
@@ -54,62 +54,45 @@
         />
         <label for="name" class="form__label">Your Name</label>
       </div> -->
-      <!-- <input
+      <input
         type="text"
         class="bg-transparent border-b-2 border-solid border-white text-white text-center py-3 text-lg"
         [(ngModel)]="YourName"
         placeholder="Please Enter Your Name"
-      /> -->
+      />
     </div>
     <div>
       <button
         [disabled]="!YourName || !roundedImage"
         (click)="CreateSnkalp()"
-        class="bg-yellow-200 mt-5 disabled:bg-gray-400 disabled:border-black border hover:bg-blue-700 text-[#011a5c] uppercase text-lg font-bold py-2 px-4 rounded-md"
+        class="bg-blue-500 mt-5 disabled:bg-gray-400 disabled:border-black border hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
       >
         Create Card
       </button>
     </div>
   </div>
-  <div class="top-0 left-0 absolute -z-20 overflow-hidden" id="IDCARDDEMo">
-    <!-- style="display: none" -->
-    <div class="" style="height: 600px; width: 600px">
+  <div
+    class="top-0 left-0 absolute -z-20 overflow-hidden"
+    id="IDCARDDEMo"
+    style="display: none"
+  >
+    <div class="" style="height: 721px; width: 446px">
       <!-- style="height: 863px; width: 610px" -->
       <!-- style="height: 863px; width: 610px; display: none" -->
-      <!-- style="width: 170px; top: 24px; left: 138px" -->
-      <!-- style="width: 208px; top: 56px; left: 92px" -->
       <img
         [src]="roundedImage"
+        style="width: 170px; top: 24px; left: 138px"
         class="absolute z-10"
-        style="width: 180px; top: 119px; outline: 1px solid; left: 373px"
         alt=""
       />
-      <!-- <img
-        [src]="roundedImage"
-        class="absolute z-10"
-        style="width: 287px; top: 140px; left: 158px"
-        alt=""
-      /> -->
       <!-- style="width: 172px; top: 220px; left: 144px" -->
       <!-- style="top: 460px; left: 40px; font-size: 20px" -->
-      <!-- style="top: 210px; left: 78px; font-size: 20px" -->
-      <!-- <span
-        style="
-          z-index: 50;
-          width: 392px;
-          top: 266px;
-          text-align: center;
-          font-size: 20px;
-        "
+      <span
+        style="top: 210px; left: 78px; font-size: 20px"
         class="absolute font-bold"
         >{{ YourName }}</span
-      > -->
-      <!-- <img
-        class="absolute"
-        style="width: 176px; top: 348px; left: 208px; z-index: 200"
-        src="/assets/patra_06_1.png"
-      /> -->
-      <img class="h-full w-full object-contain" src="/assets/patra_07.jpeg" />
+      >
+      <img class="h-full w-full object-contain" src="/assets/patra_04.jpg" />
     </div>
   </div>
   @if (showCropper) {
@@ -122,7 +105,7 @@
       <img
         [src]="orignalImage"
         id="imageshowcase"
-        class="imagecomponent w-auto outline"
+        class="imagecomponent w-screen outline"
         style="max-height: calc(var(--vh) * 0.6)"
       />
     </div>
@@ -132,7 +115,6 @@
     >
       Crop
     </button>
-    <!-- bg-yellow-200 mt-5 disabled:bg-gray-400 disabled:border-black border hover:bg-blue-700 text-[#011a5c] uppercase text-lg font-bold py-2 px-4 rounded-md -->
   </div>
   }
   <div
