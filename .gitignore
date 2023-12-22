@@ -8,6 +8,7 @@ install-state.gz
 /out-tsc
 /bazel-out
 .firebase
+firebase-debug.*
 
 # Node
 /node_modules
