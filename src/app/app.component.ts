@@ -11,11 +11,12 @@ import {
   of,
 } from 'rxjs';
 import { Name, rou } from './Data';
-import imageCompression,{Options} from 'browser-image-compression';
-
+import imageCompression, { Options } from 'browser-image-compression';
 
 const IdCardPreviewDataID = 'IDCARDDEMo';
 @Component({
+  standalone: true,
+  imports: [],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
@@ -86,8 +87,8 @@ export class AppComponent implements AfterViewInit {
     }
     const width = sourceCanvas.width;
     const height = sourceCanvas.height;
-   console.log(width,height);
-   
+    console.log(width, height);
+
     canvas.width = width;
     canvas.height = height;
     context.imageSmoothingEnabled = true;
@@ -124,14 +125,14 @@ export class AppComponent implements AfterViewInit {
     this.ShowLoader.next(true);
     const imageFile = files[0];
     const controller = new AbortController();
-  
-    const options:Options = {
+
+    const options: Options = {
       // other options here
-      maxWidthOrHeight:1000,
+      maxWidthOrHeight: 1000,
       signal: controller.signal,
-    }
+    };
     const compressedFile = await imageCompression(imageFile, options);
-    
+
     // simulate abort the compression after 1.5 seconds
     setTimeout(function () {
       controller.abort(new Error('I just want to stop'));
