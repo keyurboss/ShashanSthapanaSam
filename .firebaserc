@@ -1,0 +1,26 @@
+{
+  "projects": {
+    "default": "rpslinkshortner"
+  },
+  "targets": {
+    "rpslinkshortner": {
+      "hosting": {
+        "choviyar": [
+          "choviyar"
+        ],
+        "chaturmasik-choviyar": [
+          "chaturmasik-choviyar"
+        ],
+        "marupanaekaaymbil": [
+          "marupanaekaaymbil"
+        ],
+        "sahastrafantrust": [
+          "sahastrafantrust"
+        ],
+        "amulyatak": [
+          "amulyatak"
+        ]
+      }
+    }
+  }
+}

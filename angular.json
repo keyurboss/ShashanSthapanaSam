@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/shashan-sthapana-sam1111",
+            "outputPath": "dist/shashan-sthapana-sam",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [

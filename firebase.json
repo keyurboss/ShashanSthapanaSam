@@ -1,8 +1,8 @@
 {
   "hosting": {
     "public": "dist/shashan-sthapana-sam",
-    "target": "marupanaekaaymbil",
-    "predeploy": ["npm run build:production"],
+    "target": "chaturmasik-choviyar",
+    "predeploy": ["npm run build"],
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {

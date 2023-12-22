@@ -8141,9 +8141,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"shashan-sthapana-sam1111@workspace:.":
+"shashan-sthapana-sam@workspace:.":
   version: 0.0.0-use.local
-  resolution: "shashan-sthapana-sam1111@workspace:."
+  resolution: "shashan-sthapana-sam@workspace:."
   dependencies:
     "@angular-devkit/build-angular": "npm:^17.0.8"
     "@angular/animations": "npm:^17.0.0"
