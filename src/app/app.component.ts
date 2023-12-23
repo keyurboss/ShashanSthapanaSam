@@ -92,12 +92,12 @@ export class AppComponent implements AfterViewInit {
   getRoundedCanvas(sourceCanvas: HTMLCanvasElement) {
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
-
     if (context === null || canvas === null) {
       return;
     }
     const width = sourceCanvas.width;
     const height = sourceCanvas.height;
+    debugger
     console.log(width, height);
 
     canvas.width = width;
@@ -163,7 +163,7 @@ export class AppComponent implements AfterViewInit {
     const e = document.getElementById('imageshowcase');
     if (e !== null && e instanceof HTMLImageElement) {
       this.cropperInstance = new Cropper(e, {
-        aspectRatio: 0.741173,
+        aspectRatio: 1,
         viewMode: 1,
         ready: () => {
           this.ShowLoader.next(false);
@@ -185,8 +185,8 @@ export class AppComponent implements AfterViewInit {
     const croppedCanvas = this.cropperInstance.getCroppedCanvas();
 
     // Round
-    const roundedCanvas = croppedCanvas;
-    // const roundedCanvas = this.getRoundedCanvas(croppedCanvas);
+    // const roundedCanvas = croppedCanvas;
+    const roundedCanvas = this.getRoundedCanvas(croppedCanvas);
     if (roundedCanvas) {
       this.roundedImage = roundedCanvas.toDataURL();
       console.log(this.roundedImage);

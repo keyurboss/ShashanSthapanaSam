@@ -10,13 +10,14 @@
   box-sizing: border-box;
 }
 .aspect-ratio{
-  aspect-ratio: 0.7311;
+  aspect-ratio: 1;
 }
 
 .cropper-view-box,
 .cropper-face {
   border-radius: 50%;
 }
+
 .background-image-new {
   background-image: url("/assets/bg.jpg");
 }
