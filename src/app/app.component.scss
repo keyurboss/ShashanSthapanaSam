@@ -194,9 +194,16 @@ body {
 }
 
 .image_name_style {
-  top: 300px;
-  left: 76px;
-  font-size: 20px;
+  top: 376px;
+  left: 122px;
+  font-size: 16px;
+  width: 246px;
+  text-align: center;
+}
+.image_name2_style {
+  top: 406px;
+  left: 114px;
+  font-size: 16px;
   width: 246px;
   text-align: center;
 }
@@ -204,8 +211,11 @@ body {
   width: 400px;
 }
 .image_image_style {
-  width: 183px;
-  top: 81px;
-  left: 109px;
+  width: 143px;
+  top: 343px;
+  left: 32px;
+  // width: 183px;
+  // top: 81px;
+  // left: 109px;
   // outline: 1px solid white;
 }

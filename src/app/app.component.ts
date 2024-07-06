@@ -16,7 +16,7 @@ import {
   map,
   of,
 } from 'rxjs';
-import { Name, rou } from './Data';
+import { Name, part2, rou } from './Data';
 import imageCompression, { Options } from 'browser-image-compression';
 import { AsyncPipe, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -50,6 +50,7 @@ export class AppComponent implements AfterViewInit {
   showCropper = false;
   finalImage = '';
   YourName = Name;
+  Location = part2;
   constructor(@Inject(PLATFORM_ID) platformId: any) {
     this._LoaderObse = this.ShowLoader.pipe(map((a) => !a));
     if (!isPlatformBrowser(platformId)) {
