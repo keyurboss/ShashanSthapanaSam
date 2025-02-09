@@ -23,11 +23,10 @@ import { FormsModule } from '@angular/forms';
 
 const IdCardPreviewDataID = 'IDCARDDEMo';
 @Component({
-  standalone: true,
-  imports: [AsyncPipe, FormsModule],
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+    imports: [AsyncPipe, FormsModule],
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements AfterViewInit {
   height = 0;
@@ -107,14 +106,14 @@ export class AppComponent implements AfterViewInit {
     context.drawImage(sourceCanvas, 0, 0, width, height);
     context.globalCompositeOperation = 'destination-in';
     context.beginPath();
-    context.arc(
-      width / 2,
-      height / 2,
-      Math.min(width, height) / 2,
-      0,
-      2 * Math.PI,
-      true
-    );
+    // context.arc(
+    //   width / 2,
+    //   height / 2,
+    //   Math.min(width, height) / 2,
+    //   0,
+    //   2 * Math.PI,
+    //   true
+    // );
     context.fill();
     return canvas;
   }
@@ -164,7 +163,7 @@ export class AppComponent implements AfterViewInit {
     const e = document.getElementById('imageshowcase');
     if (e !== null && e instanceof HTMLImageElement) {
       this.cropperInstance = new Cropper(e, {
-        aspectRatio: 1,
+        aspectRatio: 350/450,
         viewMode: 1,
         ready: () => {
           this.ShowLoader.next(false);
