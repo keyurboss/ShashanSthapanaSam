@@ -1,7 +1,7 @@
 {
   "hosting": {
     "public": "dist/shashan-sthapana-sam/browser",
-    "target": "chaturmasik-choviyar",
+    "target": "403-mi-salgiri",
     "predeploy": ["npm run build"],
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [

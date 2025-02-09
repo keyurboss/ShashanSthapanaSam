@@ -5,6 +5,9 @@
   "targets": {
     "rpslinkshortner": {
       "hosting": {
+        "403-mi-salgiri":[
+          "403-mi-salgiri"
+        ],
         "choviyar": [
           "choviyar"
         ],
