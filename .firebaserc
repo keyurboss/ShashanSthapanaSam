@@ -5,6 +5,9 @@
   "targets": {
     "rpslinkshortner": {
       "hosting": {
+        "jivdaya":[
+          "jivdaya"
+        ],
         "403-mi-salgiri":[
           "403-mi-salgiri"
         ],
