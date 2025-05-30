@@ -197,13 +197,16 @@ body {
    text-shadow: 1px -1px 15px rgba(0,0,0,0.83);
 }
 .image_name_style {
-  top: 346px;
-  // display: none;
-  left: 145px;
-  font-size: 16px;
-  width: 233px;
-  color: white;
-  text-align: center;
+    top: 358px;
+    right: 23px;
+    height: 29px;
+    font-size: 13px;
+    font-weight: 500;
+    width: 130px;
+    color: white;
+    text-align: center;
+    // outline: 1px solid;
+    line-height: 13px;
 }
 .image_name2_style {
   display: none;
@@ -218,9 +221,9 @@ body {
   width: 400px;
 }
 .image_image_style {
-    top: 185px;
+    top: 183px;
     right: 21px;
-  width: 132px;
+    width: 132px;
   // top: 343px;
   // left: 32px;
   // width: 183px;
